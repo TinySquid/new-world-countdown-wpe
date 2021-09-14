@@ -1,4 +1,6 @@
 {
+	"contentrating" : "Everyone",
+	"description" : "Can't wait for New World like me? Slap this nice 4K background with a release countdown timer on your monitor! \r\n\r\n3 Different backgrounds to choose from (all 4K)\r\n\r\n\r\nSource is on Github: https://github.com/TinySquid/new-world-countdown-wpe\r\n\r\nBased off my web-based site (with push notifications): https://newworldcountdown.com/",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -27,6 +29,28 @@
 				"type" : "combo",
 				"value" : "0"
 			},
+			"countdownxposition" : 
+			{
+				"fraction" : false,
+				"index" : 1,
+				"max" : 5120,
+				"min" : 0,
+				"order" : 101,
+				"text" : "Countdown X Position",
+				"type" : "slider",
+				"value" : 840
+			},
+			"countdownyposition" : 
+			{
+				"fraction" : false,
+				"index" : 2,
+				"max" : 3840,
+				"min" : 0,
+				"order" : 102,
+				"text" : "Countdown Y Position",
+				"type" : "slider",
+				"value" : 590
+			},
 			"schemecolor" : 
 			{
 				"order" : 0,
@@ -37,7 +61,11 @@
 		}
 	},
 	"preview" : "preview.jpg",
+	"tags" : [ "Game" ],
 	"title" : "New World",
 	"type" : "web",
-	"version" : 0
+	"version" : 2,
+	"visibility" : "public",
+	"workshopid" : "2575058724",
+	"workshopurl" : "steam://url/CommunityFilePage/2575058724"
 }

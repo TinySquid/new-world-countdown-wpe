@@ -33,14 +33,21 @@ function getRemaining() {
 	};
 }
 
-// COUNTDOWN
-const interval = setInterval(() => {
-	const remaining = getRemaining()
-	
-	setDisplay(remaining);
+function setupCountdown() {
+	return setInterval(() => {
+		const remaining = getRemaining();
 
-	if (remaining.distance < 0) {
-		headlineRef.current.innerText = `New World is out!`;
-		countdownRef.current.style.display = "none";
-	}
-}, 1000);
+		setDisplay(remaining);
+
+		if (remaining.distance <= 0) {
+			const header = document.getElementById("countdown-header");
+			const countdown = document.getElementById("countdown");
+
+			header.innerText = `New World is out!`;
+			countdown.style.display = "none";
+		}
+	}, 1000);
+}
+
+// COUNTDOWN START
+const interval = setupCountdown();
