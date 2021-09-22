@@ -3,7 +3,7 @@ const second = 1000,
 	hour = minute * 60,
 	day = hour * 24;
 
-const endDate = "Sept 28, 2021 09:00:00";
+const endDate = "2021-09-28T15:00:00.000Z";
 const countdown = new Date(endDate).getTime();
 
 const days = document.querySelector("#days");
