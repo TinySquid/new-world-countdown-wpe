@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "Can't wait for New World like me? Slap this nice 4K background with a release *countdown timer on your monitor! \n\n3 Different backgrounds to choose from (all 4K)\n\nSource code is on Github: https://github.com/TinySquid/new-world-countdown-wpe\n\n* Includes toggle for timer visibility.",
+	"description" : "Can't wait for New World like me? Slap this nice 4K background with a *release countdown timer on your monitor! \n\n3 Different backgrounds to choose from (all 4K)\n\nSource code is on Github: https://github.com/TinySquid/new-world-countdown-wpe\n\n* Includes toggle for timer visibility.",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -31,22 +31,24 @@
 			},
 			"countdownxposition" : 
 			{
+				"condition" : "displaycountdown.value == true",
 				"fraction" : false,
-				"index" : 2,
+				"index" : 3,
 				"max" : 5120,
 				"min" : 0,
-				"order" : 102,
+				"order" : 103,
 				"text" : "Countdown X Position",
 				"type" : "slider",
 				"value" : 840
 			},
 			"countdownyposition" : 
 			{
+				"condition" : "displaycountdown.value == true",
 				"fraction" : false,
-				"index" : 3,
+				"index" : 4,
 				"max" : 3840,
 				"min" : 0,
-				"order" : 103,
+				"order" : 104,
 				"text" : "Countdown Y Position",
 				"type" : "slider",
 				"value" : 590
@@ -58,6 +60,38 @@
 				"text" : "Display Countdown",
 				"type" : "bool",
 				"value" : true
+			},
+			"launchrollouttime" : 
+			{
+				"condition" : "displaycountdown.value == true",
+				"index" : 2,
+				"options" : 
+				[
+					{
+						"label" : "EU",
+						"value" : "EU"
+					},
+					{
+						"label" : "SA",
+						"value" : "SA"
+					},
+					{
+						"label" : "AU",
+						"value" : "AU"
+					},
+					{
+						"label" : "NA West",
+						"value" : "NAW"
+					},
+					{
+						"label" : "NA East",
+						"value" : "NAE"
+					}
+				],
+				"order" : 102,
+				"text" : "Server Region",
+				"type" : "combo",
+				"value" : "NAW"
 			},
 			"schemecolor" : 
 			{
@@ -72,7 +106,7 @@
 	"tags" : [ "Game" ],
 	"title" : "New World",
 	"type" : "web",
-	"version" : 4,
+	"version" : 5,
 	"visibility" : "public",
 	"workshopid" : "2575058724",
 	"workshopurl" : "steam://url/CommunityFilePage/2575058724"

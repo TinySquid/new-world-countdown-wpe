@@ -1,23 +1,52 @@
-const second = 1000,
-	minute = second * 60,
-	hour = minute * 60,
-	day = hour * 24;
+const SECOND = 1000,
+	MINUTE = SECOND * 60,
+	HOUR = MINUTE * 60,
+	DAY = HOUR * 24;
 
-const endDate = "2021-09-28T15:00:00.000Z";
-const countdown = new Date(endDate).getTime();
+const header = document.querySelector("#countdown-header");
+const container = document.querySelector("#container");
+const ulList = document.querySelector("ul");
 
 const days = document.querySelector("#days");
 const hours = document.querySelector("#hours");
 const minutes = document.querySelector("#minutes");
 const seconds = document.querySelector("#seconds");
 
-setDisplay(getRemaining());
+// Init countdown NA WEST
+let endDateUTC = LAUNCH_DATES["NAW"];
+let countdown = new Date(endDateUTC).getTime();
 
-function setDisplay(remaining) {
+// Show timer before waiting on interval on first load.
+updateCountdown();
+
+let interval = setInterval(setupCountdown, 1000);
+
+function resetCountdown(toDateUTC) {
+	clearInterval(interval);
+
+	endDateUTC = toDateUTC;
+	countdown = new Date(endDateUTC).getTime();
+
+	interval = setInterval(setupCountdown, 1000);
+}
+
+function showCountdown() {
+	container.style.display = "block";
+}
+
+function hideCountdown() {
+	container.style.display = "none";
+}
+
+function updateCountdown() {
+	const remaining = getRemaining();
+
 	days.innerHTML = remaining.days;
 	hours.innerHTML = remaining.hours;
 	minutes.innerHTML = remaining.minutes;
 	seconds.innerHTML = remaining.seconds;
+
+	return remaining;
 }
 
 function getRemaining() {
@@ -25,29 +54,21 @@ function getRemaining() {
 	const distance = countdown - now;
 
 	return {
-		days: Math.floor(distance / day),
-		hours: Math.floor((distance % day) / hour),
-		minutes: Math.floor((distance % hour) / minute),
-		seconds: Math.floor((distance % minute) / second),
+		days: Math.floor(distance / DAY),
+		hours: Math.floor((distance % DAY) / HOUR),
+		minutes: Math.floor((distance % HOUR) / MINUTE),
+		seconds: Math.floor((distance % MINUTE) / SECOND),
 		distance: distance
 	};
 }
 
 function setupCountdown() {
-	return setInterval(() => {
-		const remaining = getRemaining();
+	const { distance } = updateCountdown();
 
-		setDisplay(remaining);
+	if (distance <= 0) {
+		header.innerText = `New World is out!`;
+		ulList.style.display = "none";
 
-		if (remaining.distance <= 0) {
-			const header = document.getElementById("countdown-header");
-			const countdown = document.getElementById("countdown");
-
-			header.innerText = `New World is out!`;
-			countdown.style.display = "none";
-		}
-	}, 1000);
+		clearInterval(interval);
+	}
 }
-
-// COUNTDOWN START
-const interval = setupCountdown();

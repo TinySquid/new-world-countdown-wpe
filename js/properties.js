@@ -1,12 +1,3 @@
-const container = document.getElementById("container");
-
-const images = ["NewWorld_keyart.jpg", "NewWorld_keyart2.jpg", "NewWorld_keyart3.jpg"];
-
-const background = document.querySelector("#background");
-
-// Default image
-background.style.backgroundImage = "url('./img/NewWorld_keyart.jpg')";
-
 window.wallpaperPropertyListener = {
 	applyUserProperties: function (properties) {
 		if (properties.countdownxposition) {
@@ -22,16 +13,17 @@ window.wallpaperPropertyListener = {
 		}
 
 		if (properties.displaycountdown) {
-			const countdown = document.getElementById("countdown");
-			const header = document.getElementById("countdown-header");
+			display = properties.displaycountdown.value;
 
-			if (properties.displaycountdown.value) {
-				header.style.display = "block";
-				countdown.style.display = "block";
+			if (!!display) {
+				showCountdown();
 			} else {
-				header.style.display = "none";
-				countdown.style.display = "none";
+				hideCountdown();
 			}
+		}
+
+		if (properties.launchrollouttime) {
+			resetCountdown(LAUNCH_DATES[properties.launchrollouttime.value]);
 		}
 	}
 };
