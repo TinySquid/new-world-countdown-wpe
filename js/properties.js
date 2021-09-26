@@ -20,5 +20,18 @@ window.wallpaperPropertyListener = {
 		if (properties.backgroundimage) {
 			background.style.backgroundImage = `url('./img/${images[Number(properties.backgroundimage.value)]}')`;
 		}
+
+		if (properties.displaycountdown) {
+			const countdown = document.getElementById("countdown");
+			const header = document.getElementById("countdown-header");
+
+			if (properties.displaycountdown.value) {
+				header.style.display = "block";
+				countdown.style.display = "block";
+			} else {
+				header.style.display = "none";
+				countdown.style.display = "none";
+			}
+		}
 	}
 };
